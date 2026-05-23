@@ -156,7 +156,7 @@ The Stress Test evaluates system behavior under heavy load by significantly incr
 ![Stress-Aggregate](Stress-Aggregate.png)
 
 #### Graph Results
-![Stress-Graph](Stress-Graph.png)
+![Stress-Graph](Stress-Graph-Result.png)
 
 ---
 
