@@ -213,13 +213,13 @@ The system struggles more with sudden traffic spikes than with high user volume.
 
 ### 📸 Screenshots
 #### Thread Group
-![Soak-Thread-Group](Soak-Thread-Group.png)
+![Soak-Thread-Group](images/Soak-Thread-Group.png)
 
 #### Aggregate Report
-![Soak-Aggregate](Soak-Aggregate.png)
+![Soak-Aggregate](images/Soak-Aggregate.png)
 
 #### Graph Results
-![Soak-Graph](Soak-Graph-Result.png)
+![Soak-Graph](images/Soak-Graph-Result.png)
 
 ---
 
