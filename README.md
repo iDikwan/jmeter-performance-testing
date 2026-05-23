@@ -169,10 +169,10 @@ The system handles high user load effectively when traffic is distributed over t
 ![Burst-Thread-Group](images/Stress2-Thread-Group.png)
 
 #### Aggregate Report
-![Burst-Thread-Group](images/Stress2-Aggregate.png)
+![Burst-Aggregate](images/Stress2-Aggregate.png)
 
 #### Graph Results
-![Burst-Thread-Group](images/Stress2-Graph-Result.png)
+![Burst-Graph](images/Stress2-Graph-Result.png)
 
 ---
 
@@ -213,13 +213,13 @@ The system struggles more with sudden traffic spikes than with high user volume.
 
 ### 📸 Screenshots
 #### Thread Group
-![Soak-Aggregate](Soak-Thread-Group.png)
+![Soak-Thread-Group](Soak-Thread-Group.png)
 
 #### Aggregate Report
 ![Soak-Aggregate](Soak-Aggregate.png)
 
 #### Graph Results
-![Soak-Aggregate](Soak-Graph-Result.png)
+![Soak-Graph](Soak-Graph-Result.png)
 
 ---
 
