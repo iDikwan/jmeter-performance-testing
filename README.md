@@ -74,7 +74,10 @@ The Load Test was conducted to evaluate system performance under normal user con
 - Number of Users: 10  
 - Ramp-Up: 10 seconds  
 - Loop Count: 10  
-- Timer: None  
+- Timer: None
+
+#### HTTP Request Configuration
+![HTTP-Req](HTTP-Req.png)
 
 ---
 
@@ -90,9 +93,6 @@ The Load Test was conducted to evaluate system performance under normal user con
 
 #### Thread Group Setup
 ![Load-Thread-Group](Load-Thread-Group.png)
-
-#### HTTP Request Configuration
-![Load-HTTP-Req](Load-HTTP-Req.png)
 
 #### Aggregate Report
 ![Load-Aggregate](Load-Aggregate.png)
