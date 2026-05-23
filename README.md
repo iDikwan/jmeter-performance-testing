@@ -6,15 +6,46 @@ https://jsonplaceholder.typicode.com/posts
 ## 🛠 Tool Used
 Apache JMeter
 
+## 🔄 How It Works
+
+JMeter (client) sends HTTP GET requests to the API server.
+
+JMeter ─────────► httpbin.org/get
+(send request)
+
+JMeter ◄───────── httpbin.org/get
+(receive response)
+
+JMeter records:
+- Response time
+- Throughput
+- Error rate
+
+The results vary depending on server load, network latency, and request patterns.
+
+---
+
 ## 🧪 Test Types
-- Load Test  
-- Stress Test  
-- Soak Test  
+
+### ✅ Load Test
+Simulates normal user traffic to evaluate system performance under expected conditions.
+
+### ✅ Stress Test
+Pushes the system beyond its capacity to identify breaking points and performance degradation.
+
+### ✅ Soak Test
+Tests system stability over a long period of sustained usage.
 
 ---
 
 ## 📖 Introduction
 Performance testing evaluates how a system behaves under different loads. This study focuses on analyzing the performance of a REST API using Apache JMeter. The objective is to examine system responsiveness, throughput, and reliability under different testing conditions.
+
+---
+
+## ❗ Problem Statement
+
+Modern APIs must handle varying user loads efficiently. This project aims to evaluate how a REST API performs under different traffic conditions, including normal usage and high load, to identify potential bottlenecks and performance limitations.
 
 ---
 
