@@ -65,7 +65,7 @@ Modern APIs must handle varying user loads efficiently. This project evaluates h
 - Timer: None  
 
 ### 📸 HTTP Request Configuration
-![HTTP-Req](HTTP-Req.png)
+![HTTP-Req](images/HTTP-Req.png)
 
 ---
 
