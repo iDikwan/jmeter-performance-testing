@@ -1,27 +1,33 @@
 # Performance Testing and Bottleneck Analysis of a REST API Using Apache JMeter
 
+---
+
 ## 📌 Target API
 https://jsonplaceholder.typicode.com/posts
 
+---
+
 ## 🛠 Tool Used
 Apache JMeter
+
+---
 
 ## 🔄 How It Works
 
 JMeter (client) sends HTTP GET requests to the API server.
 
-JMeter ─────────► httpbin.org/get
+JMeter ─────────► jsonplaceholder.typicode.com  
 (send request)
 
-JMeter ◄───────── httpbin.org/get
+JMeter ◄───────── jsonplaceholder.typicode.com  
 (receive response)
 
 JMeter records:
-- Response time
-- Throughput
-- Error rate
+- Response time  
+- Throughput  
+- Error rate  
 
-The results vary depending on server load, network latency, and request patterns.
+The results may vary depending on network latency, server load, and request patterns.
 
 ---
 
@@ -50,47 +56,33 @@ Modern APIs must handle varying user loads efficiently. This project aims to eva
 ---
 
 ## ⚙️ Test Setup
+
 - Tool: Apache JMeter  
-- Method: GET  
 - Protocol: HTTPS  
+- Method: GET  
+- Loop Count: 10  
+- Ramp-Up Period: 50 seconds  
+- HTTP Header Manager:  
+  - User-Agent: Mozilla/5.0  
+  - Accept: application/json  
 
 ---
 
 ## 🔍 Load Test
 
-The Load Test was conducted to evaluate the performance of the REST API under normal user load conditions. The objective is to measure response time, throughput, and error rate when multiple users access the system simultaneously.
+The Load Test was conducted to evaluate system performance under normal user conditions using a controlled setup. Only the number of users (threads) is varied across tests to ensure a fair comparison.
 
-Initially, the following API was selected for testing:
+### ✅ Configuration
+- Number of Users: 10  
+- Ramp-Up: 50 seconds  
+- Loop Count: 10  
+- Timer: None  
 
-https://reqres.in/api/users?page=2
-
-However, all requests resulted in a 100% error rate. Upon investigation, the issue was caused by a missing API key requirement. The API rejected all requests because authentication was required, making it unsuitable for unauthenticated performance testing using Apache JMeter.
-
-This demonstrates a real-world limitation where APIs enforce access control mechanisms that block automated testing tools unless proper credentials are provided.
-
-To resolve this, the testing target was changed to:
-
-https://jsonplaceholder.typicode.com/posts
-
-This API is designed for testing and allows unrestricted access, making it more suitable for performance evaluation.
-
-The final test configuration was as follows:
-
-- Tool: Apache JMeter  
-- HTTP Method: GET  
-- Number of Users: 30–50  
-- Ramp-Up Period: 30–50 seconds  
-- Loop Count: 5–10  
-- Timer: 2000–5000 ms delay  
-
-The Load Test results are summarized below:
-
-- Total Requests: 2150  
-- Average Response Time: 241 ms  
-- Minimum Response Time: 24 ms  
-- Maximum Response Time: 4558 ms  
-- Throughput: 1.8 requests/sec  
-- Error Rate: **46.51%**  
+### 📊 Results
+- Total Requests: 6350  
+- Average Response Time: 174 ms  
+- Throughput: 1.1 requests/sec  
+- Error Rate: **15.75%**  
 
 ### 📸 Screenshots
 
@@ -106,32 +98,104 @@ The Load Test results are summarized below:
 #### Graph Results
 ![Load-Graph-Result](Load-Graph-Result.png)
 
+---
+
 ### 🧠 Analysis
 
-The Load Test results indicate that the API performs efficiently in terms of response time, with an average response time of 241 ms. However, a relatively high error rate of 46.51% was observed during the test.
+The Load Test results indicate that the API performs efficiently under normal usage conditions, with an average response time of 174 ms.
 
-This shows that while the API can process requests quickly, it cannot reliably handle repeated concurrent requests. A significant portion of requests failed during execution.
+However, an error rate of 15.75% was observed, indicating that while most requests were successfully processed, some failures still occurred.
 
-The failures are most likely caused by external limitations such as API rate limiting, request throttling, or restrictions on automated traffic. This means the bottleneck is not due to slow processing, but due to imposed access restrictions by the API provider.
+This suggests that the system is generally responsive but exhibits limited reliability when handling repeated requests. These failures may be caused by external factors such as request handling limits or network-related constraints.
 
-### ⚠️ Bottleneck
+---
 
-The primary bottleneck identified is:
+### ⚠️ Identified Bottleneck
 
-✅ External API Rate Limiting and Request Throttling  
+✅ Moderate error rate under normal load indicates a **reliability limitation**
 
-This indicates that the system restricts repeated or high-frequency requests, resulting in a high number of failed responses under load conditions.
+The API may not consistently handle continuous repeated requests, resulting in partial request failures.
+
+---
 
 ### ✅ Conclusion (Load Test)
 
-The Load Test demonstrates that while the API provides fast response times, it lacks stability under continuous concurrent load. The high error rate highlights a critical limitation caused by external system policies rather than internal performance issues.
-
-This confirms that the testing successfully identified a bottleneck, fulfilling the objective of analyzing system behavior under load.
+The Load Test demonstrates that the API performs well under normal traffic with fast response times. However, the presence of errors indicates potential reliability issues, suggesting a limitation in handling sustained user activity.
 
 ---
 
 ## 🔥 Stress Test
-(To be completed)
+
+The Stress Test was conducted to evaluate system behavior under heavy load conditions by significantly increasing the number of users while keeping all other variables constant.
+
+### ✅ Configuration
+- Number of Users: 200  
+- Ramp-Up: 50 seconds  
+- Loop Count: 10  
+- Timer: None  
+
+### 📊 Results
+- Total Requests: 8350  
+- Average Response Time: 161 ms  
+- Throughput: 1.4 requests/sec  
+- Error Rate: **11.98%**  
+
+### 📸 Screenshots
+
+#### Thread Group Setup
+![Stress-Thread-Group](Stress-Thread-Group.png)
+
+#### Aggregate Report
+![Stress-Aggregate](Stress-Aggregate.png)
+
+#### Graph Results
+![Stress-Graph](Stress-Graph.png)
+
+---
+
+### 🧠 Analysis
+
+Interestingly, the Stress Test resulted in a slightly lower error rate (11.98%) compared to the Load Test (15.75%), despite using a significantly higher number of users.
+
+This behavior suggests that system performance is influenced not only by the number of concurrent users but also by how requests are distributed over time.
+
+With a gradual ramp-up configuration, requests are introduced steadily rather than all at once. This reduces the likelihood of sudden request spikes, allowing the system to process requests more efficiently even under higher load.
+
+This demonstrates that traffic patterns and request distribution play a critical role in system performance.
+
+---
+
+### ⚠️ Identified Bottleneck
+
+✅ Request handling efficiency depends on traffic distribution  
+
+The system may experience more failures during concentrated request bursts rather than sustained distributed traffic.
+
+---
+
+### ✅ Conclusion (Stress Test)
+
+The Stress Test shows that the system remains relatively stable even under heavy load conditions when requests are distributed gradually. This highlights that system limitations are influenced more by traffic patterns than by user count alone.
+
+---
+
+## 📊 Results Summary
+
+| Test | Users | Response Time | Throughput | Error Rate |
+|------|------|--------------|------------|-----------|
+| Load | 10 | 174 ms | 1.1/sec | 15.75% |
+| Stress | 200 | 161 ms | 1.4/sec | 11.98% |
+| Soak | - | - | - | - |
+
+---
+
+## 🧠 Overall Analysis
+
+The results show that increasing the number of users does not necessarily lead to worse performance. Instead, system behavior is highly dependent on how requests are distributed.
+
+Gradual load introduction allows the server to manage requests more effectively, while sudden bursts may lead to higher failure rates.
+
+This highlights the importance of considering both user load and traffic patterns in performance testing.
 
 ---
 
@@ -140,15 +204,6 @@ This confirms that the testing successfully identified a bottleneck, fulfilling 
 
 ---
 
-## 📊 Results Summary
-
-| Test | Response Time | Throughput | Errors |
-|------|--------------|------------|--------|
-| Load | 241 ms | 1.8/sec | 46.51% |
-| Stress |            |            |        |
-| Soak |              |            |        |
-
----
-
 ## 🎥 Demonstration Video
 (Add your YouTube link here)
+``
