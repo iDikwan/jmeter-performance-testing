@@ -28,9 +28,11 @@ Performance testing evaluates how a system behaves under different loads. This s
 
 ## 🔍 Load Test
 🎯 Objective
+
 The Load Test was conducted to evaluate the performance of the REST API under normal user load conditions. The objective is to measure response time, throughput, and error rate when multiple users access the system simultaneously.
 
 ⚠️ Initial Testing Issue (ReqRes API)
+
 Initially, the following API was selected for testing:
 https://reqres.in/api/users?page=2
 
@@ -38,12 +40,14 @@ However, all requests resulted in a 100% error rate. Upon investigation, the iss
 This demonstrates a real-world limitation where APIs enforce access control mechanisms that prevent automated testing tools like Apache JMeter from sending requests without proper credentials.
 
 🔄 Change of Testing Target
+
 To ensure accurate and meaningful performance testing, the target API was changed to:
 https://jsonplaceholder.typicode.com/posts
 
 This API is publicly accessible and designed for testing and prototyping, making it more suitable for performance testing scenarios.
 
 🌐 Final Target API
+
 https://jsonplaceholder.typicode.com/posts
 
 
