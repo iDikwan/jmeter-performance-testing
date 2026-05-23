@@ -69,7 +69,7 @@ Error Rate: 46.51%
 
 📸 Screenshots
 
-Thread Group Setup
+### Thread Group Setup
 Load-Thread-Group.png
 
 
