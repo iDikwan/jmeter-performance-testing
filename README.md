@@ -62,7 +62,11 @@ Modern APIs must handle varying user loads efficiently. This project aims to eva
 - Method: GET  
 - Loop Count: 10  
 - Ramp-Up Period: 10 seconds  
-- Timer: None  
+- Timer: None
+
+
+#### HTTP Request Configuration
+![HTTP-Req](HTTP-Req.png)
 
 ---
 
@@ -74,10 +78,7 @@ The Load Test was conducted to evaluate system performance under normal user con
 - Number of Users: 10  
 - Ramp-Up: 10 seconds  
 - Loop Count: 10  
-- Timer: None
-
-#### HTTP Request Configuration
-![HTTP-Req](HTTP-Req.png)
+- Timer: None  
 
 ---
 
