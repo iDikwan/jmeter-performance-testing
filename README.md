@@ -86,17 +86,19 @@ Error Rate: 46.51%
 
 
 🧠 Analysis
+
 The Load Test results indicate that the API performs efficiently in terms of response time, with an average response time of 241 ms. However, a relatively high error rate of 46.51% was observed during the test.
 This suggests that while the API can process requests quickly, it cannot handle repeated concurrent requests reliably. A significant number of requests were rejected or failed during execution.
 The errors are most likely caused by external limitations such as:
 
-API rate limiting
-Request throttling
-Restrictions on automated traffic
+- API rate limiting
+- Request throttling
+- Restrictions on automated traffic
 
 This indicates that the performance limitation is not due to system processing speed, but due to access control and traffic management policies implemented by the API provider.
 
 ⚠️ Identified Bottleneck
+
 The primary bottleneck identified during the Load Test is:
 
 ✅ External API Rate Limiting and Request Throttling
@@ -104,6 +106,7 @@ The primary bottleneck identified during the Load Test is:
 This means that the API restricts repeated or high-frequency requests, resulting in failed responses even under moderate load conditions.
 
 ✅ Load Test Conclusion
+
 The Load Test demonstrates that although the API responds quickly under normal conditions, its reliability decreases significantly under continuous concurrent access. The high error rate highlights a limitation imposed by external system policies rather than internal processing inefficiencies.
 This test successfully identifies a key performance bottleneck, fulfilling the objective of analyzing system behavior under load.
 
