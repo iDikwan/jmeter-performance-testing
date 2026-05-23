@@ -61,28 +61,30 @@ Modern APIs must handle varying user loads efficiently. This project aims to eva
 - Protocol: HTTPS  
 - Method: GET  
 - Loop Count: 10  
-- Ramp-Up Period: 50 seconds  
-- HTTP Header Manager:  
-  - User-Agent: Mozilla/5.0  
-  - Accept: application/json  
+- Ramp-Up Period: 10 seconds  
+- Timer: None  
 
 ---
 
 ## 🔍 Load Test
 
-The Load Test was conducted to evaluate system performance under normal user conditions using a controlled setup. Only the number of users (threads) is varied across tests to ensure a fair comparison.
+The Load Test was conducted to evaluate system performance under normal user conditions using a controlled setup.
 
 ### ✅ Configuration
 - Number of Users: 10  
-- Ramp-Up: 50 seconds  
+- Ramp-Up: 10 seconds  
 - Loop Count: 10  
 - Timer: None  
 
+---
+
 ### 📊 Results
-- Total Requests: 6350  
-- Average Response Time: 174 ms  
-- Throughput: 1.1 requests/sec  
-- Error Rate: **15.75%**  
+- Total Requests: 10650  
+- Average Response Time: 200 ms  
+- Throughput: 1.4 requests/sec  
+- Error Rate: **9.40%**  
+
+---
 
 ### 📸 Screenshots
 
@@ -102,43 +104,47 @@ The Load Test was conducted to evaluate system performance under normal user con
 
 ### 🧠 Analysis
 
-The Load Test results indicate that the API performs efficiently under normal usage conditions, with an average response time of 174 ms.
+The Load Test results indicate that the API performs efficiently under normal usage conditions, with an average response time of 200 ms.
 
-However, an error rate of 15.75% was observed, indicating that while most requests were successfully processed, some failures still occurred.
+An error rate of 9.40% was observed, which indicates that most requests were successfully processed, but a small percentage failed. Additionally, occasional high response times were recorded, suggesting temporary delays during certain requests.
 
-This suggests that the system is generally responsive but exhibits limited reliability when handling repeated requests. These failures may be caused by external factors such as request handling limits or network-related constraints.
+Overall, the system demonstrates good performance with minor reliability limitations.
 
 ---
 
 ### ⚠️ Identified Bottleneck
 
-✅ Moderate error rate under normal load indicates a **reliability limitation**
-
-The API may not consistently handle continuous repeated requests, resulting in partial request failures.
+✅ Moderate error rate indicates **minor reliability limitations under continuous usage**
 
 ---
 
 ### ✅ Conclusion (Load Test)
 
-The Load Test demonstrates that the API performs well under normal traffic with fast response times. However, the presence of errors indicates potential reliability issues, suggesting a limitation in handling sustained user activity.
+The Load Test demonstrates that the API can handle normal traffic efficiently with fast response time and relatively low error rate. However, minor instability exists during repeated requests.
 
 ---
 
 ## 🔥 Stress Test
 
-The Stress Test was conducted to evaluate system behavior under heavy load conditions by significantly increasing the number of users while keeping all other variables constant.
+The Stress Test evaluates system behavior under heavy load by significantly increasing the number of users while maintaining the same configuration.
+
+---
 
 ### ✅ Configuration
 - Number of Users: 200  
-- Ramp-Up: 50 seconds  
+- Ramp-Up: 10 seconds  
 - Loop Count: 10  
 - Timer: None  
 
+---
+
 ### 📊 Results
-- Total Requests: 8350  
-- Average Response Time: 161 ms  
-- Throughput: 1.4 requests/sec  
-- Error Rate: **11.98%**  
+- Total Requests: 12650  
+- Average Response Time: 183 ms  
+- Throughput: 1.6 requests/sec  
+- Error Rate: **7.91%**  
+
+---
 
 ### 📸 Screenshots
 
@@ -155,27 +161,25 @@ The Stress Test was conducted to evaluate system behavior under heavy load condi
 
 ### 🧠 Analysis
 
-Interestingly, the Stress Test resulted in a slightly lower error rate (11.98%) compared to the Load Test (15.75%), despite using a significantly higher number of users.
+The Stress Test produced an interesting result where the error rate (7.91%) was lower than the Load Test (9.40%), despite a much higher number of users.
 
-This behavior suggests that system performance is influenced not only by the number of concurrent users but also by how requests are distributed over time.
+This shows that system performance depends not only on user count but also on how requests are distributed.
 
-With a gradual ramp-up configuration, requests are introduced steadily rather than all at once. This reduces the likelihood of sudden request spikes, allowing the system to process requests more efficiently even under higher load.
-
-This demonstrates that traffic patterns and request distribution play a critical role in system performance.
+With a ramp-up period of 10 seconds, requests are introduced gradually rather than all at once. This avoids sudden spikes and allows the system to process requests more efficiently, resulting in improved throughput and lower error rate.
 
 ---
 
 ### ⚠️ Identified Bottleneck
 
-✅ Request handling efficiency depends on traffic distribution  
+✅ System is sensitive to **traffic patterns rather than just user volume**
 
-The system may experience more failures during concentrated request bursts rather than sustained distributed traffic.
+Performance degradation is more likely under burst traffic conditions.
 
 ---
 
 ### ✅ Conclusion (Stress Test)
 
-The Stress Test shows that the system remains relatively stable even under heavy load conditions when requests are distributed gradually. This highlights that system limitations are influenced more by traffic patterns than by user count alone.
+The system performs efficiently even under higher user load when requests are evenly distributed. This indicates that traffic pattern plays a significant role in system stability.
 
 ---
 
@@ -183,19 +187,19 @@ The Stress Test shows that the system remains relatively stable even under heavy
 
 | Test | Users | Response Time | Throughput | Error Rate |
 |------|------|--------------|------------|-----------|
-| Load | 10 | 174 ms | 1.1/sec | 15.75% |
-| Stress | 200 | 161 ms | 1.4/sec | 11.98% |
+| Load | 10 | 200 ms | 1.4/sec | 9.40% |
+| Stress | 200 | 183 ms | 1.6/sec | 7.91% |
 | Soak | - | - | - | - |
 
 ---
 
 ## 🧠 Overall Analysis
 
-The results show that increasing the number of users does not necessarily lead to worse performance. Instead, system behavior is highly dependent on how requests are distributed.
+The results demonstrate that increasing the number of users does not always negatively impact performance. Instead, system behavior depends heavily on request distribution patterns.
 
-Gradual load introduction allows the server to manage requests more effectively, while sudden bursts may lead to higher failure rates.
+Gradual request distribution allows the server to handle higher load more efficiently, while sudden bursts may cause failures.
 
-This highlights the importance of considering both user load and traffic patterns in performance testing.
+This highlights the importance of considering both user load and traffic behavior in performance testing.
 
 ---
 
@@ -206,4 +210,3 @@ This highlights the importance of considering both user load and traffic pattern
 
 ## 🎥 Demonstration Video
 (Add your YouTube link here)
-``
