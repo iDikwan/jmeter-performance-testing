@@ -7,122 +7,105 @@ https://jsonplaceholder.typicode.com/posts
 Apache JMeter
 
 ## 🧪 Test Types
-- Load Test
-- Stress Test
-- Soak Test
+- Load Test  
+- Stress Test  
+- Soak Test  
 
 ---
 
 ## 📖 Introduction
-Performance testing evaluates how a system behaves under different loads. This study focuses on analyzing the performance of a REST API using Apache JMeter.
+Performance testing evaluates how a system behaves under different loads. This study focuses on analyzing the performance of a REST API using Apache JMeter. The objective is to examine system responsiveness, throughput, and reliability under different testing conditions.
 
 ---
 
 ## ⚙️ Test Setup
-- Tool: Apache JMeter
-- Method: GET
-- Endpoint: /api/users?page=2
-- Protocol: HTTPS
+- Tool: Apache JMeter  
+- Method: GET  
+- Protocol: HTTPS  
 
 ---
 
 ## 🔍 Load Test
-🎯 Objective
 
 The Load Test was conducted to evaluate the performance of the REST API under normal user load conditions. The objective is to measure response time, throughput, and error rate when multiple users access the system simultaneously.
 
-⚠️ Initial Testing Issue (ReqRes API)
-
 Initially, the following API was selected for testing:
+
 https://reqres.in/api/users?page=2
 
-However, all requests resulted in a 100% error rate. Upon investigation, the issue was identified as a missing API key requirement. The API returned an error message indicating that authentication was required, making it unsuitable for unauthenticated performance testing.
-This demonstrates a real-world limitation where APIs enforce access control mechanisms that prevent automated testing tools like Apache JMeter from sending requests without proper credentials.
+However, all requests resulted in a 100% error rate. Upon investigation, the issue was caused by a missing API key requirement. The API rejected all requests because authentication was required, making it unsuitable for unauthenticated performance testing using Apache JMeter.
 
-🔄 Change of Testing Target
+This demonstrates a real-world limitation where APIs enforce access control mechanisms that block automated testing tools unless proper credentials are provided.
 
-To ensure accurate and meaningful performance testing, the target API was changed to:
-https://jsonplaceholder.typicode.com/posts
-
-This API is publicly accessible and designed for testing and prototyping, making it more suitable for performance testing scenarios.
-
-🌐 Final Target API
+To resolve this, the testing target was changed to:
 
 https://jsonplaceholder.typicode.com/posts
 
+This API is designed for testing and allows unrestricted access, making it more suitable for performance evaluation.
 
-⚙️ Configuration
+The final test configuration was as follows:
 
-Tool: Apache JMeter
-HTTP Method: GET
-Number of Users (Threads): 30–50
-Ramp-Up Period: 30–50 seconds
-Loop Count: 5–10
-Timer: Uniform Random Timer (2000–5000 ms delay)
+- Tool: Apache JMeter  
+- HTTP Method: GET  
+- Number of Users: 30–50  
+- Ramp-Up Period: 30–50 seconds  
+- Loop Count: 5–10  
+- Timer: 2000–5000 ms delay  
 
+The Load Test results are summarized below:
 
-📊 Results
+- Total Requests: 2150  
+- Average Response Time: 241 ms  
+- Minimum Response Time: 24 ms  
+- Maximum Response Time: 4558 ms  
+- Throughput: 1.8 requests/sec  
+- Error Rate: **46.51%**  
 
-Total Requests: 2150
-Average Response Time: 241 ms
-Minimum Response Time: 24 ms
-Maximum Response Time: 4558 ms
-Throughput: 1.8 requests/sec
-Error Rate: 46.51%
+### 📸 Screenshots
 
-
-📸 Screenshots
-
-### Thread Group Setup
+#### Thread Group Setup
 ![Load-Thread-Group](Load-Thread-Group.png)
 
-
-### HTTP Request Configuration
+#### HTTP Request Configuration
 ![Load-HTTP-Req](Load-HTTP-Req.png)
 
-
-### Aggregate Report
+#### Aggregate Report
 ![Load-Aggregate](Load-Aggregate.png)
 
-
-### Graph Results
+#### Graph Results
 ![Load-Graph-Result](Load-Graph-Result.png)
 
-
-🧠 Analysis
+### 🧠 Analysis
 
 The Load Test results indicate that the API performs efficiently in terms of response time, with an average response time of 241 ms. However, a relatively high error rate of 46.51% was observed during the test.
-This suggests that while the API can process requests quickly, it cannot handle repeated concurrent requests reliably. A significant number of requests were rejected or failed during execution.
-The errors are most likely caused by external limitations such as:
 
-- API rate limiting
-- Request throttling
-- Restrictions on automated traffic
+This shows that while the API can process requests quickly, it cannot reliably handle repeated concurrent requests. A significant portion of requests failed during execution.
 
-This indicates that the performance limitation is not due to system processing speed, but due to access control and traffic management policies implemented by the API provider.
+The failures are most likely caused by external limitations such as API rate limiting, request throttling, or restrictions on automated traffic. This means the bottleneck is not due to slow processing, but due to imposed access restrictions by the API provider.
 
-⚠️ Identified Bottleneck
+### ⚠️ Bottleneck
 
-The primary bottleneck identified during the Load Test is:
+The primary bottleneck identified is:
 
-✅ External API Rate Limiting and Request Throttling
+✅ External API Rate Limiting and Request Throttling  
 
-This means that the API restricts repeated or high-frequency requests, resulting in failed responses even under moderate load conditions.
+This indicates that the system restricts repeated or high-frequency requests, resulting in a high number of failed responses under load conditions.
 
-✅ Load Test Conclusion
+### ✅ Conclusion (Load Test)
 
-The Load Test demonstrates that although the API responds quickly under normal conditions, its reliability decreases significantly under continuous concurrent access. The high error rate highlights a limitation imposed by external system policies rather than internal processing inefficiencies.
-This test successfully identifies a key performance bottleneck, fulfilling the objective of analyzing system behavior under load.
+The Load Test demonstrates that while the API provides fast response times, it lacks stability under continuous concurrent load. The high error rate highlights a critical limitation caused by external system policies rather than internal performance issues.
+
+This confirms that the testing successfully identified a bottleneck, fulfilling the objective of analyzing system behavior under load.
+
+---
 
 ## 🔥 Stress Test
-Users: 200+  
-Result: (put your result here)
+(To be completed)
 
 ---
 
 ## ⏳ Soak Test
-Duration: 30 minutes  
-Result: (put your result here)
+(To be completed)
 
 ---
 
@@ -130,27 +113,11 @@ Result: (put your result here)
 
 | Test | Response Time | Throughput | Errors |
 |------|--------------|------------|--------|
-| Load |              |            |        |
+| Load | 241 ms | 1.8/sec | 46.51% |
 | Stress |            |            |        |
 | Soak |              |            |        |
 
 ---
 
-## 🧠 Analysis
-Explain what happened in each test.
-
----
-
-## ⚠️ Bottleneck
-- Example: High response time under stress
-
----
-
-## ✅ Recommendations
-- Improve server handling
-- Add caching
-
----
-
-## 🎥 Video
-Paste YouTube link here
+## 🎥 Demonstration Video
+(Add your YouTube link here)
