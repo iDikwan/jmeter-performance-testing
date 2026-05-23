@@ -86,13 +86,13 @@ Modern APIs must handle varying user loads efficiently. This project evaluates h
 
 ### 📸 Screenshots
 #### Thread Group
-![Load-Thread-Group](Load-Thread-Group.png)
+![Load-Thread-Group](images/Load-Thread-Group.png)
 
 #### Aggregate Report
-![Load-Aggregate](Load-Aggregate.png)
+![Load-Aggregate](images/Load-Aggregate.png)
 
 #### Graph Results
-![Load-Graph-Result](Load-Graph-Result.png)
+![Load-Graph-Result](images/Load-Graph-Result.png)
 
 ---
 
@@ -124,9 +124,14 @@ The system handles normal usage effectively with minimal performance issues.
 ---
 
 ### 📸 Screenshots
-![Stress-Thread-Group](Stress-Thread-Group.png)  
-![Stress-Aggregate](Stress-Aggregate.png)  
-![Stress-Graph](Stress-Graph-Result.png)
+#### Thread Group
+![Stress-Thread-Group](images/Stress-Thread-Group.png)
+
+#### Aggregate Report
+![Stress-Aggregate](images/Stress-Aggregate.png)
+
+#### Graph Results
+![Stress-Graph](images/Stress-Graph-Result.png)
 
 ---
 
@@ -160,7 +165,14 @@ The system handles high user load effectively when traffic is distributed over t
 ---
 
 ### 📸 Screenshots
-![Burst-Thread-Group](Stress-Thread-Group.png)
+#### Thread Group
+![Burst-Thread-Group](images/Stress2-Thread-Group.png)
+
+#### Aggregate Report
+![Burst-Thread-Group](images/Stress2-Aggregate.png)
+
+#### Graph Results
+![Burst-Thread-Group](images/Stress2-Graph-Result.png)
 
 ---
 
@@ -200,7 +212,14 @@ The system struggles more with sudden traffic spikes than with high user volume.
 ---
 
 ### 📸 Screenshots
+#### Thread Group
+![Soak-Aggregate](Soak-Thread-Group.png)
+
+#### Aggregate Report
 ![Soak-Aggregate](Soak-Aggregate.png)
+
+#### Graph Results
+![Soak-Aggregate](Soak-Graph-Result.png)
 
 ---
 
