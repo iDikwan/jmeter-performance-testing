@@ -73,15 +73,15 @@ Error Rate: 46.51%
 Load-Thread-Group.png
 
 
-HTTP Request Configuration
+### HTTP Request Configuration
 Load-HTTP-Req.png
 
 
-Aggregate Report
+### Aggregate Report
 Load-Aggregate.png
 
 
-Graph Results
+### Graph Results
 Load-Graph-Result.png
 
 
