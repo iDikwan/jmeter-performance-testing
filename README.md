@@ -2,6 +2,18 @@
 
 ---
 
+## 📄 ITT440: Individual Assignment Report
+
+| Details | Information |
+|--------|------------|
+| Course | ITT440 - Network Programming |
+| Group | NBCS2555A |
+| Name | Muhammad Syazwan Bin Azmi |
+| Student ID | 2024720249 |
+| Lecturer | Sir Shahadan Bin Saad |
+
+---
+
 ## 📌 Target API
 https://jsonplaceholder.typicode.com/posts
 
@@ -248,11 +260,8 @@ The system performs reliably over extended periods without degradation.
 
 ## 🧠 Overall Analysis
 
-System performance depends heavily on traffic patterns rather than the number of users alone.
+System performance depends heavily on traffic patterns rather than the number of users alone. This demonstrates that effective system design must consider both scalability and traffic control mechanisms to handle real-world usage patterns.
 
 The API performs well under normal load, high user load (when gradual), and long-duration usage. However, performance efficiency decreases under sudden traffic spikes, indicating that burst traffic is the primary bottleneck.
 
 ---
-
-## 🎥 Demonstration Video
-(Add your YouTube link here)
