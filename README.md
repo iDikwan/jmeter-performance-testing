@@ -70,11 +70,11 @@ Error Rate: 46.51%
 📸 Screenshots
 
 ### Thread Group Setup
-(Load-Thread-Group.png)
+![Load-Thread-Group](Load-Thread-Group.png)
 
 
 ### HTTP Request Configuration
-Load-HTTP-Req.png
+![Load-HTTP-Req](Load-HTTP-Req.png)
 
 
 ### Aggregate Report
