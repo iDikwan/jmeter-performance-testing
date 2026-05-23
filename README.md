@@ -78,11 +78,11 @@ Error Rate: 46.51%
 
 
 ### Aggregate Report
-Load-Aggregate.png
+![Load-Aggregate](Load-Aggregate.png)
 
 
 ### Graph Results
-Load-Graph-Result.png
+![Load-Graph-Result](Load-Graph-Result.png)
 
 
 🧠 Analysis
